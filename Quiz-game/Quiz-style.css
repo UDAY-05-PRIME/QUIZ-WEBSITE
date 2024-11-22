@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    background-color: #f7fafd;
+    justify-content: center;
+    height: 100vh
+}
+.box{
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 400px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 
+            0 0 8px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.titlePart{
+    display: flex;
+    flex-direction: row;
+    width: 100%; /* Ensure it adapts to the parent width */
+    height: 50px;
+    border-bottom: 2px solid rgba(176, 222, 255, 0.589);
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.quizpart{
+    display: flex;
+    flex-direction: column;
+    background: #f7fafd;
+    width: 100%; /* Ensure it adapts to the parent width */
+    height: 300px;
+    border-bottom: 2px solid rgba(176, 222, 255, 0.589);
+}
