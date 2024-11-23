@@ -14,31 +14,121 @@ body{
     background: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
     position: relative;
     width: 100%;
     max-width: 900px;
-    height: 400px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 
-            0 0 8px rgba(0, 0, 0, 0.15);
+                0 0 8px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     overflow: hidden;
+    padding: 20px;
+    padding-top: 0px;
+    margin: 20px auto; 
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
-.titlePart{
+.titlePart {
     display: flex;
-    flex-direction: row;
-    width: 100%; /* Ensure it adapts to the parent width */
-    height: 50px;
-    border-bottom: 2px solid rgba(176, 222, 255, 0.589);
+    justify-content: space-between; 
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 100%; 
+    height: 65px;
+    border-bottom: 1px solid rgba(176, 222, 255, 0.589);
+    padding: 7px 15px 7px;
+    box-sizing: border-box;
+    padding-bottom: 0px;
 }
-.quizpart{
+
+.titlePart h2 {
+    font-size: 17px;
+    font-weight: 400;
+    margin: 0; 
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+}
+
+.timer,
+.questionNumber {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.titlePart button {
+    background: #f1f6fa;
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    max-width: 110px; 
+    cursor: pointer;
+}
+
+.quizContent{
     display: flex;
     flex-direction: column;
-    background: #f7fafd;
-    width: 100%; /* Ensure it adapts to the parent width */
-    height: 300px;
+    background: #f1f6fa;
+    width: 100%; 
     border-bottom: 2px solid rgba(176, 222, 255, 0.589);
+}
+
+
+.quizContent p {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.options {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    gap: 20px; /* Add space between options */
+    justify-content: center;
+}
+.firstTwoOption, .restTwoOption{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+.options button {
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.options button:hover {
+    background: #0056b3;
+}
+
+.nextButton {
+    margin-top: 20px; /* Space above the next button */
+}
+
+.nextButton button {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+}
+
+.nextButton button:hover {
+    background: #218838;
 }

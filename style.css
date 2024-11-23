@@ -38,7 +38,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #f7fafd;
+    background: #f1f6fa;
     width:auto;
     max-width: 300px;
     height: auto;
@@ -55,7 +55,7 @@ body{
     left: 50%; /* Center it horizontally relative to quizCard */
     transform: translateX(-50%);
     text-align: center;
-  background-color: rgb(176, 222, 255);
+  background-color: rgba(176, 222, 255);
   color: rgb(0, 0, 0);
   font-size: 13px;
   width: auto;
@@ -86,7 +86,7 @@ body{
 }
 .startButton button{
     background: #0e3f70;
-    color: #f7fafd;
+    color: #f1f6fa;
     font-size: 25px;
     font-weight: 600;
     border-radius: 5px;
