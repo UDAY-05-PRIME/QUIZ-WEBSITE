@@ -143,3 +143,14 @@ body{
 .nextButton button:hover {
     background: rgba(0, 100, 172, 0.806) !important;;
 }
+.correct{
+    background-color: rgba(176, 255, 218, 0.589);
+    border-color: rgba(99, 255, 206, 0.589);
+    color: #f1f6fa;
+}
+
+.wrong {
+    background-color: rgba(255, 176, 176, 0.589);
+    border-color: rgba(255, 109, 109, 0.589);
+    color: #f1f6fa;
+}

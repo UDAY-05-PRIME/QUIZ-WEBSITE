@@ -1,7 +1,9 @@
+console.log("Script loaded successfully!");
+
 const questions = [
     {
         question: "Who directed the Interstellar movie?",
-        answer: [
+        answers: [
             { text: "A. Christopher Nolan", correct: true },
             { text: "B. Steven Spielberg", correct: false },
             { text: "C. Quentin Tarantino", correct: false },
@@ -10,7 +12,7 @@ const questions = [
     },
     {
         question: "Which movie won the Academy Award for Best Picture in 1994?",
-        answer: [
+        answers: [
             { text: "A. Pulp Fiction", correct: false },
             { text: "B. Forrest Gump", correct: true },
             { text: "C. The Shawshank Redemption", correct: false },
@@ -19,7 +21,7 @@ const questions = [
     },
     {
         question: "Which actor played the character of Jack Dawson in Titanic?",
-        answer: [
+        answers: [
             { text: "A. Leonardo DiCaprio", correct: true },
             { text: "B. Brad Pitt", correct: false },
             { text: "C. Matt Damon", correct: false },
@@ -28,7 +30,7 @@ const questions = [
     },
     {
         question: "What is the highest-grossing movie of all time as of 2024?",
-        answer: [
+        answers: [
             { text: "A. Avatar", correct: false },
             { text: "B. Avengers: Endgame", correct: true },
             { text: "C. Titanic", correct: false },
@@ -37,7 +39,7 @@ const questions = [
     },
     {
         question: "Who directed the movie 'Inception'?",
-        answer: [
+        answers: [
             { text: "A. Christopher Nolan", correct: true },
             { text: "B. James Cameron", correct: false },
             { text: "C. Steven Spielberg", correct: false },
@@ -46,7 +48,7 @@ const questions = [
     },
     {
         question: "Which movie features the quote 'I'll be back'?",
-        answer: [
+        answers: [
             { text: "A. The Terminator", correct: true },
             { text: "B. Predator", correct: false },
             { text: "C. Total Recall", correct: false },
@@ -55,7 +57,7 @@ const questions = [
     },
     {
         question: "Who played the character of 'The Joker' in The Dark Knight (2008)?",
-        answer: [
+        answers: [
             { text: "A. Joaquin Phoenix", correct: false },
             { text: "B. Heath Ledger", correct: true },
             { text: "C. Jack Nicholson", correct: false },
@@ -64,7 +66,7 @@ const questions = [
     },
     {
         question: "Which movie is based on the Marvel superhero Iron Man?",
-        answer: [
+        answers: [
             { text: "A. Iron Man", correct: true },
             { text: "B. Spider-Man", correct: false },
             { text: "C. Captain America", correct: false },
@@ -73,7 +75,7 @@ const questions = [
     },
     {
         question: "Who directed the movie 'Jurassic Park'?",
-        answer: [
+        answers: [
             { text: "A. Steven Spielberg", correct: true },
             { text: "B. James Cameron", correct: false },
             { text: "C. George Lucas", correct: false },
@@ -82,7 +84,7 @@ const questions = [
     },
     {
         question: "Which movie is considered the first feature-length animated film?",
-        answer: [
+        answers: [
             { text: "A. Snow White and the Seven Dwarfs", correct: true },
             { text: "B. Pinocchio", correct: false },
             { text: "C. Fantasia", correct: false },
@@ -91,7 +93,7 @@ const questions = [
     },
     {
         question: "Which actor played the character of Neo in The Matrix?",
-        answer: [
+        answers: [
             { text: "A. Keanu Reeves", correct: true },
             { text: "B. Tom Cruise", correct: false },
             { text: "C. Will Smith", correct: false },
@@ -100,7 +102,7 @@ const questions = [
     },
     {
         question: "Which movie features the song 'My Heart Will Go On'?",
-        answer: [
+        answers: [
             { text: "A. Titanic", correct: true },
             { text: "B. The Bodyguard", correct: false },
             { text: "C. Pretty Woman", correct: false },
@@ -109,7 +111,7 @@ const questions = [
     },
     {
         question: "Which film is known as the first movie in the Marvel Cinematic Universe?",
-        answer: [
+        answers: [
             { text: "A. Iron Man", correct: true },
             { text: "B. The Incredible Hulk", correct: false },
             { text: "C. Captain America: The First Avenger", correct: false },
@@ -118,7 +120,7 @@ const questions = [
     },
     {
         question: "Who directed the movie 'The Godfather'?",
-        answer: [
+        answers: [
             { text: "A. Francis Ford Coppola", correct: true },
             { text: "B. Martin Scorsese", correct: false },
             { text: "C. Brian De Palma", correct: false },
@@ -127,7 +129,7 @@ const questions = [
     },
     {
         question: "Which movie won the Academy Award for Best Picture in 2023?",
-        answer: [
+        answers: [
             { text: "A. Everything Everywhere All At Once", correct: true },
             { text: "B. Top Gun: Maverick", correct: false },
             { text: "C. The Banshees of Inisherin", correct: false },
@@ -135,6 +137,76 @@ const questions = [
         ]
     }
 ];
-    const questionElement = document.getElementById("question");
-    const answerButtonAB = document.getElementsByClassName("firstTwoOption");
-    const nextButton = document.getElementById("nextBtn");
+    let currentQuestionindex = 0;
+    let score = 0;
+
+    const questionElement = document.getElementById("Question");
+    const answerButtons = document.querySelectorAll(".options button");
+    const questionNumberElement = document.querySelector(".questionNumber");
+
+
+    function loadQuestion(){
+        const currentQuestion = questions[currentQuestionindex];
+        let questionNo = currentQuestionindex + 1;
+        questionElement.innerText = questionNo + ". " + currentQuestion.question;
+
+        answerButtons.forEach((button, index) => {
+            const answer = currentQuestion.answers[index];
+            button.innerText = answer.text;
+            button.dataset.correct = answer.correct; 
+        });
+    }
+    loadQuestion();
+
+    answerButtons.forEach((button) => {
+        button.addEventListener("click", (event) =>{
+            const selectedButton = event.target ;
+            const iscorrect = selectedButton.dataset.correct === "true";
+            setButtonStyles(selectedButton, iscorrect);
+        });
+    });
+    function setButtonStyles(button,iscorrect){
+        if(iscorrect){
+            button.classlist.add("correct");
+        }
+        else{
+            button.classlist.add("wrong");
+        }
+        
+        answerButtons.forEach((btn) => btn.disabled = true);
+    }
+    // answerButtons.forEach((button) => {
+    //     button.addEventListener("click", (event) => {
+    //         const selectedButton = event.target; // Get the clicked button
+    //         const isCorrect = selectedButton.dataset.correct === "true"; // Check if it's correct
+    
+    //         // Highlight buttons based on correctness
+    //         setButtonStyles(selectedButton, isCorrect);
+    
+    //         // Update score if the answer is correct
+    //         if (isCorrect) {
+    //             score++;
+    //         }
+    
+    //         // Wait a moment, then load the next question
+    //         setTimeout(() => {
+    //             currentQuestionindex++;
+    //             if (currentQuestionindex < questions.length) {
+    //                 loadQuestion();
+    //             } else {
+    //                 showResults(); // Show final score when quiz ends
+    //             }
+    //         }, 1000);
+    //     });
+    // });
+    // function setButtonStyles(button, isCorrect) {
+    //     if (isCorrect) {
+    //         button.classList.add("correct"); // Add a 'correct' CSS class
+    //     } else {
+    //         button.classList.add("wrong"); // Add a 'wrong' CSS class
+    //     }
+    
+    //     // Disable all buttons after one is clicked
+    //     answerButtons.forEach((btn) => btn.disabled = true);
+    // }
+    
