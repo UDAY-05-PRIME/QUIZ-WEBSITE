@@ -143,9 +143,18 @@ const questions = [
     const questionElement = document.getElementById("Question");
     const answerButtons = document.querySelectorAll(".options button");
     const questionNumberElement = document.querySelector(".questionNumber");
+    const nextButton = document.getElementById("nextBtn");
 
+    function startQuiz(){
+        currentQuestionindex = 0;
+        score = 0;
+        nextButton.innerHTML = "Next";
+        loadQuestion();
+
+    }
 
     function loadQuestion(){
+        resetState();
         const currentQuestion = questions[currentQuestionindex];
         let questionNo = currentQuestionindex + 1;
         questionElement.innerText = questionNo + ". " + currentQuestion.question;
@@ -153,60 +162,31 @@ const questions = [
         answerButtons.forEach((button, index) => {
             const answer = currentQuestion.answers[index];
             button.innerText = answer.text;
-            button.dataset.correct = answer.correct; 
+            button.dataset.correct = answer.correct;
+            
+                button.dataset.correct = answer.correct;
+            
+            button.classList.remove("correct", "incorrect");
+            button.onclick = selectAnswer;
         });
     }
-    loadQuestion();
-
-    answerButtons.forEach((button) => {
-        button.addEventListener("click", (event) =>{
-            const selectedButton = event.target ;
-            const iscorrect = selectedButton.dataset.correct === "true";
-            setButtonStyles(selectedButton, iscorrect);
-        });
-    });
-    function setButtonStyles(button,iscorrect){
-        if(iscorrect){
-            button.classlist.add("correct");
+    
+    function resetState(){
+        nextButton.style.display = "none";
+    }
+    
+    function selectAnswer(e){
+        console.log("function run");
+        const selectedBtn = e.target;
+        const isCorrect = selectedBtn.dataset.correct === "true";
+        if(isCorrect){
+            selectedBtn.classList.add("correct");
+            console.log("right");
         }
         else{
-            button.classlist.add("wrong");
+            selectedBtn.classList.add("incorrect");
+            console.log("wrong");
         }
-        
-        answerButtons.forEach((btn) => btn.disabled = true);
+        console.log("function run 2");
     }
-    // answerButtons.forEach((button) => {
-    //     button.addEventListener("click", (event) => {
-    //         const selectedButton = event.target; // Get the clicked button
-    //         const isCorrect = selectedButton.dataset.correct === "true"; // Check if it's correct
-    
-    //         // Highlight buttons based on correctness
-    //         setButtonStyles(selectedButton, isCorrect);
-    
-    //         // Update score if the answer is correct
-    //         if (isCorrect) {
-    //             score++;
-    //         }
-    
-    //         // Wait a moment, then load the next question
-    //         setTimeout(() => {
-    //             currentQuestionindex++;
-    //             if (currentQuestionindex < questions.length) {
-    //                 loadQuestion();
-    //             } else {
-    //                 showResults(); // Show final score when quiz ends
-    //             }
-    //         }, 1000);
-    //     });
-    // });
-    // function setButtonStyles(button, isCorrect) {
-    //     if (isCorrect) {
-    //         button.classList.add("correct"); // Add a 'correct' CSS class
-    //     } else {
-    //         button.classList.add("wrong"); // Add a 'wrong' CSS class
-    //     }
-    
-    //     // Disable all buttons after one is clicked
-    //     answerButtons.forEach((btn) => btn.disabled = true);
-    // }
-    
+    startQuiz();
