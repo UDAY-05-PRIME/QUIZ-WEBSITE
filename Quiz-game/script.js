@@ -194,6 +194,14 @@ const questions = [
         if(currentQuestionIndex < questions.length){
             loadQuestion();
         }
+        else {
+            // When the quiz ends, redirect to the home page (index.html)
+            try {
+                window.location.href = "../index.html"; // Adjust the path if needed
+            } catch (error) {
+                console.error("Error during redirect:", error);
+            }
+        }
     }
     nextButton.onclick = handleNextButton;
     startQuiz();
