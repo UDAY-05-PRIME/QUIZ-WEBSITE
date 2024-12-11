@@ -106,22 +106,24 @@ body{
 .options button {
     border: 4px solid rgba(176, 222, 255, 0.589);
     width: 260px;
-    height: 50px;
+    max-height: 75px;
     padding: 10px;
     background: #f1f6fa;
     color: #333;
-    font-size: 5px;
-    font-weight: 700;
+    font-size: 2px;
+    font-weight: 500;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     transition: border 0.4s ease;
 }
 
-.options button:hover {
+.options button:hover:not([disabled]) {
     border: 4px solid rgba(0, 100, 172, 0.806) !important;;
 }
-
+.options button:disabled{
+    cursor: no-drop;
+}
 .nextButton{
     margin-top: 20px;
     margin-bottom: 20px;
