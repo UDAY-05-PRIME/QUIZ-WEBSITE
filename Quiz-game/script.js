@@ -175,8 +175,8 @@ const questions = [
         const isCorrect = selectedBtn.dataset.correct === "true";
         if(isCorrect){
             selectedBtn.classList.add("correct");
-            score = score+10;
-            scoreElement.innerText = "Score: " + score;
+            score++;
+            scoreElement.innerText = "Score: 0" + score;
         }
         else{
             selectedBtn.classList.add("incorrect");
